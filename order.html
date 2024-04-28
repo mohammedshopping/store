@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Cairo", sans-serif;
+            background: linear-gradient(#ffffff, #eae9e9);
+        }
+
+        .error-message {
+            font-size: 12px;
+            color: red;
+        }
+
+        input {
+            height: 35px;
+            width: 100%;
+            font-size: 18px;
+            padding: 0 5px;
+            background: #fff;
+            border: 1px solid #000;
+            outline: none;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        input:focus,
+        select:focus {
+            border: 1px solid #15b1d4;
+            box-shadow: 0px 0px 5px 1px #15b1d4;
+        }
+
+        select {
+            height: 40px;
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        #quantity {
+            width: 50px;
+        }
+
+        .container {
+            width: 500px;
+            max-width: 95%;
+            margin: 20px auto;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container .imagePrice {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            border: 1px solid #000;
+            padding: 5px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px 1px #afafaf;
+            background: #fff;
+        }
+
+        .container .imagePrice img {
+            height: 100%;
+        }
+
+        .container .imagePrice #product-price {
+            font-size: 27px;
+            color: rgb(171, 9, 9);
+        }
+
+        .container #product-name {
+            font-size: 25px;
+            border: none;
+            color: green;
+            outline: none;
+            background-color: transparent;
+        }
+
+        /* button */
+        .button {
+            position: relative;
+            padding: 10px 22px;
+            width: 150px;
+            height: auto;
+            border-radius: 6px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            background-color: #0e8435;
+            transition: all 0.2s ease;
+            margin: 15px auto;
+            font-size: 18px;
+        }
+
+        .button:active {
+            transform: scale(0.96);
+        }
+
+        .error {
+            border: 1px solid red;
+        }
+
+        .box {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #product-price {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #product-image {
+            max-width: 300px;
+            max-height: 300px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            border: 2px solid #8a1111;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" dir="rtl">
+        <div class="box">
+            <div class="product-details">
+                <p style="color: #be1232; font-size: 35px;" id="product-price">Product Price</p>
+            </div>
+            <img id="product-image" src="" alt="Product Image">
+        </div>
+
+        <form id="orderForm"action="https://formspree.io/f/mrgnjznw" method="POST">
+            <label for="quantity">إسم المنتج</label>
+            <input type="text" id="product-name" name="اسم المنتج" placeholder="Product Name" readonly>
+
+            <label for="quantity">الكمية:</label>
+            <input type="number" id="quantity" name="الكمية" min="1" value="1" required>
+
+            <label for="fullname">الاسم الكامل*</label>
+            <input placeholder="أدخل إسمك" type="text" id="fullname" name="الاسم الكامل" required>
+
+            <label for="phone">رقم الهاتف</label>
+            <input dir="rtl" placeholder="رقم الهاتف" type="tel" id="phone" name="رقم الهاتف" required>
+
+            <label for="yourNumber">المقاس <i style="color: #086861;" class="fa-solid fa-truck"></i></label>
+            <select style="background: #ba1d1d25;" name="التوصيل" id="" required>
+                <option value="" selected disabled>اختر مقاسك</option>
+                <option value="">S</option>
+                <option value="">M</option>
+                <option value="">L</option>
+                <option value="">XL</option>
+                <option value="">XXL</option>
+                <option value="">XXXL</option>
+            </select>
+
+
+            <label for="">إختر ولايتك</label>
+            <select style="background: #ba1d1d25;" name="الولاية" id="state" required>
+                <option value="" selected disabled>اختر ولايتك</option>
+                <option value="أدرار">1. ولاية أدرار</option>
+                <option value="الشلف">2. ولاية الشلف</option>
+                <option value="الأغواط">3. ولاية الأغواط</option>
+                <option value="أم البواقي">4. ولاية أم البواقي</option>
+                <option value="باتنة">5. ولاية باتنة</option>
+                <option value="بجاية">6. ولاية بجاية</option>
+                <option value="بسكرة">7. ولاية بسكرة</option>
+                <option value="بشار">8. ولاية بشار</option>
+                <option value="البليدة">9. ولاية البليدة</option>
+                <option value="البويرة">10. ولاية البويرة</option>
+                <option value="تمنراست">11. ولاية تمنراست</option>
+                <option value="تبسة">12. ولاية تبسة</option>
+                <option value="تلمسان">13. ولاية تلمسان</option>
+                <option value="تيارت">14. ولاية تيارت</option>
+                <option value="تيزي وزو">15. ولاية تيزي وزو</option>
+                <option value="الجزائر">16. ولاية الجزائر</option>
+                <option value="الجلفة">17. ولاية الجلفة</option>
+                <option value="جيجل">18. ولاية جيجل</option>
+                <option value="سطيف">19. ولاية سطيف</option>
+                <option value="سعيدة">20. ولاية سعيدة</option>
+                <option value="سكيكدة">21. ولاية سكيكدة</option>
+                <option value="سيدي بلعباس">22. ولاية سيدي بلعباس</option>
+                <option value="عنابة">23. ولاية عنابة</option>
+                <option value="قالمة">24. ولاية قالمة</option>
+                <option value="قسنطينة">25. ولاية قسنطينة</option>
+                <option value="المدية">26. ولاية المدية</option>
+                <option value="مستغانم">27. ولاية مستغانم</option>
+                <option value="المسيلة">28. ولاية المسيلة</option>
+                <option value="معسكر">29. ولاية معسكر</option>
+                <option value="ورقلة">30. ولاية ورقلة</option>
+                <option value="وهران">31. ولاية وهران</option>
+                <option value="البيض">32. ولاية البيض</option>
+                <option value="إليزي">33. ولاية إليزي</option>
+                <option value="برج بوعريريج">34. ولاية برج بوعريريج</option>
+                <option value="بومرداس">35. ولاية بومرداس</option>
+                <option value="الطارف">36. ولاية الطارف</option>
+                <option value="تندوف">37. ولاية تندوف</option>
+                <option value="تيسمسيلت">38. ولاية تيسمسيلت</option>
+                <option value="الوادي">39. ولاية الوادي</option>
+                <option value="خنشلة">40. ولاية خنشلة</option>
+                <option value="سوق أهراس">41. ولاية سوق أهراس</option>
+                <option value="تيبازة">42. ولاية تيبازة</option>
+                <option value="ميلة">43. ولاية ميلة</option>
+                <option value="عين الدفلى">44. ولاية عين الدفلى</option>
+                <option value="النعامة">45. ولاية النعامة</option>
+                <option value="عين تموشنت">46. ولاية عين تموشنت</option>
+                <option value="غرداية">47. ولاية غرداية</option>
+                <option value="غليزان">48. ولاية غليزان</option>
+                <option value="تيميمون">49. ولاية تيميمون</option>
+                <option value="برج باجي مختار">50. ولاية برج باجي مختار</option>
+                <option value="أولاد جلال">51. ولاية أولاد جلال</option>
+                <option value="بني عباس">52. ولاية بني عباس</option>
+                <option value="إن صالح">53. ولاية إن صالح</option>
+                <option value="عين قزام">54. ولاية عين قزام</option>
+                <option value="تقرت">55. ولاية تقرت</option>
+                <option value="جانت">56. ولاية جانت</option>
+                <option value="المغير">57. ولاية المغير</option>
+                <option value="المنيعة">58. ولاية المنيعة</option>
+            </select>
+
+
+            <label for="yourNumber">البلدية <i style="color: #e38e27;" class="fa-solid fa-house"></i></label>
+            <input style="background: #ba1d1d25;" type="text" id="yourcity" name="البلدية" placeholder="أدخل البلدية">
+            <label for="yourNumber">التوصيل <i style="color: #086861;" class="fa-solid fa-truck"></i></label>
+            <select style="background: #ba1d1d25;" name="التوصيل" id="" required>
+                <option value="" selected disabled>التوصيل</option>
+                <option value="">إلى المنزل</option>
+                <option value="">إلى المكتب</option>
+            </select>
+            <label for="">ملاحظة (اختياري)</label>
+            <textarea  style="font-family:  Cairo; padding: 5px; font-size: 15px; border-radius: 10px;  background: white; outline: none;" placeholder="اكتب ملاحظة حول الطلب" name="ملاحظة" id="" cols="30" rows="6"></textarea>
+
+            <button type="submit" class="button">أطلب الان</button>
+        </form>
+        <p style="text-align: center; font-size: 22px; color: #be1232;">سيتم التواصل معكم عبر رقم الهاتف</p>
+
+    </div>
+
+    <script>
+        // Extract data from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('productName');
+        const productPrice = urlParams.get('price');
+        const productImage = urlParams.get('image');
+        const productDescription = urlParams.get('description');
+
+        // Display the data on the page
+        document.getElementById('product-price').textContent = ` ${productPrice} دج `;
+        document.getElementById('product-image').src = decodeURIComponent(productImage);
+
+        // Set product name if available
+        const productNameInput = document.getElementById('product-name');
+        if (productName) {
+            productNameInput.value = productName;
+        }
+
+        // Set product description if available
+        const descriptionElement = document.getElementById('product-description');
+        if (productDescription) {
+            descriptionElement.textContent = productDescription;
+        }
+    </script>
+</body>
+
+</html>
